@@ -27,6 +27,14 @@ def get_parser():
         "--socket_path",
         help="Specify this if you want to communicate with Neovim over a socket (file) instead of TCP.",
     )
+    parser.add_argument(
+        "--packpath",
+        default="~/.local/share/nvim/site",
+        help="Path to search packages. "
+        "The packages should be located at `pack/*/opt/nvim-treesitter` and "
+        "`pack/*/opt/nvim-treesitter-textobjects`. "
+        "The latter should be a symlink of this repo.",
+    )
     return parser
 
 
@@ -56,6 +64,13 @@ def main():
         sys.exit(1)
 
     try:
+        # This is the path to the plugins that will be loaded into nvim.
+        nvim.command(f"set packpath+={args.packpath}")
+        nvim.command("packadd nvim-treesitter")
+        nvim.command("packadd nvim-treesitter-textobjects")
+
+        nvim.command("TSUpdate")
+
         pynvim_helpers.init_nvim_communicator(
             nvim,
             [
