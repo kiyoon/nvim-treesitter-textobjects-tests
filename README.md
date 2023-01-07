@@ -1,6 +1,8 @@
 # Nvim_communicator Python Package
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![Tests](https://github.com/kiyoon/nvim-treesitter-textobjects-tests/actions/workflows/tests.yml/badge.svg)
+![Consistency Tests](https://github.com/kiyoon/nvim-treesitter-textobjects-tests/actions/workflows/consistency_tests.yml/badge.svg)
 
 This project is made for testing neovim plugins, specifically focussing on Nvim-treesitter-textobjects for now.
 
