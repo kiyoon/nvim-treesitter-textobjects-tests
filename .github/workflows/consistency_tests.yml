@@ -31,7 +31,8 @@ jobs:
           ln -s $(pwd) ~/.local/share/nvim/site/pack/nvim-treesitter-textobject/opt
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/opt
           cd ~/.local/share/nvim/site/pack/nvim-treesitter/opt
-          git clone https://github.com/nvim-treesitter/nvim-treesitter.git
+          git clone --depth=1 https://github.com/nvim-treesitter/nvim-treesitter.git
+          git clone --depth=1 https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
       - name: Compile parsers
         run: nvim --headless -c "packadd nvim-treesitter" -c "TSInstallSync all" -c "q"
 
