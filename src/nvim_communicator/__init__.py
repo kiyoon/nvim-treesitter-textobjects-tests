@@ -15,3 +15,6 @@ __all__ = [
     event_to_dict,
     events_to_listdict,
 ]
+
+from . import _version
+__version__ = _version.get_versions()['version']
