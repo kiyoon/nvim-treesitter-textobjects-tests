@@ -5,7 +5,7 @@ SOURCE_DIR=$(dirname "$0")
 # Download tests
 TEMPDIR=$(mktemp -d)
 # wget --content-disposition 'https://uoe-my.sharepoint.com/:u:/g/personal/s1884147_ed_ac_uk/EfuU0bWSgopAgZiq9ykpLjsBf7CM95TkRDa4SxM-N4CSXg?e=YzXmhQ&download=1' -P "$TEMPDIR" &> /dev/null
-wget --content-disposition 'https://github.com/kiyoon/nvim-treesitter-textobjects-tests/releases/download/v0.1.0/consistency_tests.tar.gz'
+wget --content-disposition 'https://github.com/kiyoon/nvim-treesitter-textobjects-tests/releases/download/v0.1.0/consistency_tests.tar.gz' -P "$TEMPDIR" &> /dev/null
 
 FILE=$(ls "$TEMPDIR")
 tar xvfz "$TEMPDIR/$FILE" -C "$TEMPDIR" &> /dev/null
