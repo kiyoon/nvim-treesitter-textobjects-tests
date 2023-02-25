@@ -1,23 +1,23 @@
 #!/use/bin/env python3
 
-import tqdm
-import random
 import argparse
 import logging
-from multiprocessing import Pool
 import os
-from pathlib import Path
+import random
+import re
 import tempfile
+from multiprocessing import Pool
+from pathlib import Path
 
 import coloredlogs
 import pynvim
-import re
 import requests
+import tqdm
 import yaml
 
-from nvim_communicator import pynvim_helpers
 from nvim_communicator import (
     events_to_listdict,
+    pynvim_helpers,
     receive_all_pending_messages,
     set_cursor,
 )
@@ -53,6 +53,9 @@ ACTIONS = [
     "ie",
     "as",
     "is",
+    "ag",
+    "ig",
+    "in",
     "]m",
     "]f",
     "]d",
@@ -65,6 +68,8 @@ ACTIONS = [
     "]r",
     "]t",
     "]e",
+    "]g",
+    "]n",
     "]]m",
     "]]f",
     "]]d",
@@ -75,6 +80,7 @@ ACTIONS = [
     "]]r",
     "]]t",
     "]]e",
+    "]]g",
     "]M",
     "]F",
     "]D",
@@ -87,6 +93,8 @@ ACTIONS = [
     "]R",
     "]T",
     "]E",
+    "]G",
+    "]N",
     "]]M",
     "]]F",
     "]]D",
@@ -97,6 +105,7 @@ ACTIONS = [
     "]]R",
     "]]T",
     "]]E",
+    "]]G",
     "[m",
     "[f",
     "[d",
@@ -109,6 +118,8 @@ ACTIONS = [
     "[r",
     "[t",
     "[e",
+    "[g",
+    "[n",
     "[[m",
     "[[f",
     "[[d",
@@ -119,6 +130,7 @@ ACTIONS = [
     "[[r",
     "[[t",
     "[[e",
+    "[[g",
     "[M",
     "[F",
     "[D",
@@ -131,6 +143,8 @@ ACTIONS = [
     "[R",
     "[T",
     "[E",
+    "[G",
+    "[N",
     "[[M",
     "[[F",
     "[[D",
@@ -141,6 +155,7 @@ ACTIONS = [
     "[[R",
     "[[T",
     "[[E",
+    "[[G",
 ]
 
 nvim: pynvim.Nvim | None = None

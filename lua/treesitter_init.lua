@@ -9,7 +9,7 @@ TSUpdate
 
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = "all",
+  ensure_installed = { "python" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
@@ -22,7 +22,6 @@ require("nvim-treesitter.configs").setup {
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
   highlight = {
-    -- `false` will disable the whole extension
     enable = true,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -66,6 +65,9 @@ require("nvim-treesitter.configs").setup {
         ["ie"] = "@scopename.inner",
         ["as"] = "@statement.outer",
         ["is"] = "@statement.outer",
+        ["ag"] = "@assignment.outer",
+        ["ig"] = "@assignment.inner",
+        ["in"] = "@number.inner",
       },
       -- You can choose the select mode (default is charwise 'v')
       --
@@ -119,6 +121,8 @@ require("nvim-treesitter.configs").setup {
         ["]r"] = "@frame.outer",
         ["]t"] = "@attribute.outer",
         ["]e"] = "@scopename.outer",
+        ["]g"] = "@assignment.outer",
+        ["]n"] = "@number.inner",
         ["]]m"] = "@function.inner",
         ["]]f"] = "@call.inner",
         ["]]d"] = "@conditional.inner",
@@ -129,6 +133,7 @@ require("nvim-treesitter.configs").setup {
         ["]]r"] = "@frame.inner",
         ["]]t"] = "@attribute.inner",
         ["]]e"] = "@scopename.inner",
+        ["]]g"] = "@assignment.inner",
       },
       goto_next_end = {
         ["]M"] = "@function.outer",
@@ -143,6 +148,8 @@ require("nvim-treesitter.configs").setup {
         ["]R"] = "@frame.outer",
         ["]T"] = "@attribute.outer",
         ["]E"] = "@scopename.outer",
+        ["]G"] = "@assignment.outer",
+        ["]N"] = "@number.inner",
         ["]]M"] = "@function.inner",
         ["]]F"] = "@call.inner",
         ["]]D"] = "@conditional.inner",
@@ -153,6 +160,7 @@ require("nvim-treesitter.configs").setup {
         ["]]R"] = "@frame.inner",
         ["]]T"] = "@attribute.inner",
         ["]]E"] = "@scopename.inner",
+        ["]]G"] = "@assignment.inner",
       },
       goto_previous_start = {
         ["[m"] = "@function.outer",
@@ -167,6 +175,8 @@ require("nvim-treesitter.configs").setup {
         ["[r"] = "@frame.outer",
         ["[t"] = "@attribute.outer",
         ["[e"] = "@scopename.outer",
+        ["[g"] = "@assignment.outer",
+        ["[n"] = "@number.inner",
         ["[[m"] = "@function.inner",
         ["[[f"] = "@call.inner",
         ["[[d"] = "@conditional.inner",
@@ -177,6 +187,7 @@ require("nvim-treesitter.configs").setup {
         ["[[r"] = "@frame.inner",
         ["[[t"] = "@attribute.inner",
         ["[[e"] = "@scopename.inner",
+        ["[[g"] = "@assignment.inner",
       },
       goto_previous_end = {
         ["[M"] = "@function.outer",
@@ -191,6 +202,8 @@ require("nvim-treesitter.configs").setup {
         ["[R"] = "@frame.outer",
         ["[T"] = "@attribute.outer",
         ["[E"] = "@scopename.outer",
+        ["[G"] = "@assignment.outer",
+        ["[N"] = "@number.inner",
         ["[[M"] = "@function.inner",
         ["[[F"] = "@call.inner",
         ["[[D"] = "@conditional.inner",
@@ -201,6 +214,7 @@ require("nvim-treesitter.configs").setup {
         ["[[R"] = "@frame.inner",
         ["[[T"] = "@attribute.inner",
         ["[[E"] = "@scopename.inner",
+        ["[[G"] = "@assignment.inner",
       },
     },
   },
